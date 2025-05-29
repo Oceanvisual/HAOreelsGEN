@@ -19,12 +19,12 @@ git clone https://github.com/Oceanvisual/HAOreelsGEN.git
 cd HAOreelsGEN
 ```
 
-2. Установите зависимости:
+2. Установите пакет:
 ```bash
-pip install -r requirements.txt
+pip install -e .
 ```
 
-3. Создайте файл `.env` в корневой директории и добавьте ваши API ключи:
+3. Создайте файл `.env` в директории `config/` и добавьте ваши API ключи:
 ```
 OPENAI_API_KEY=ваш_ключ_openai
 IMAGE_API_KEY=ваш_ключ_dalle
@@ -35,7 +35,7 @@ ELEVENLABS_API_KEY=ваш_ключ_elevenlabs
 
 1. Запустите программу:
 ```bash
-python dialogue_generator.py
+reels-gen --api-key ваш_ключ_elevenlabs
 ```
 
 2. Следуйте инструкциям в консоли для:
@@ -46,12 +46,28 @@ python dialogue_generator.py
 
 ## Структура проекта
 
-- `dialogue_generator.py` - основной модуль для генерации диалогов и изображений
-- `images/` - директория для хранения сгенерированных изображений
-- `metadata/` - директория для хранения метаданных
-- `output/` - директория для готовых видео
-- `assets/` - директория для фоновых видео и других ресурсов
-- `dialogues/` - директория для хранения диалогов
+```
+reels_gen/
+├── src/                    # Исходный код
+│   ├── core/              # Основные модули
+│   │   └── dialogue_generator.py
+│   └── managers/          # Менеджеры для работы с разными компонентами
+│       ├── voice_manager.py
+│       ├── image_manager.py
+│       └── video_manager.py
+├── assets/                # Ресурсы (фоновые видео и т.д.)
+├── config/               # Конфигурационные файлы
+│   └── .env
+├── docs/                 # Документация
+│   └── README.md
+├── images/              # Сгенерированные изображения
+├── metadata/           # Метаданные генераций
+├── output/            # Готовые видео
+├── temp/             # Временные файлы
+├── setup.py         # Скрипт установки пакета
+├── requirements.txt # Зависимости проекта
+└── LICENSE         # Лицензия
+```
 
 ## Требования
 
